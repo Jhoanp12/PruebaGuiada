@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-body">
+    <h4>Ejercicio 2 </h4>
+    <table class="table table-striped" *ngIf="cantCursos()">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Duración</th>
+          <th scope="col">Costo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let x of cursos; index as i">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{x.nombre}}</td>
+          <td>{{x.descripcion}}</td>
+          <td>{{x.duracion}}</td>
+          <td>{{x.costo}}</td>
+          <td>
+            <button class="btn btn-danger m-sm-1" (click)="borrarCurso(x)">Borrar</button>
+            <button class="btn btn-primary" (click)="selectCurso(x)">Seleccionar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #nada>
+  <p>No hay articulo.</p>
+</ng-template>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="registrarCurso">
+      <div class="form-group">
+        <input name="nombre" class="form-control mt-2" formControlName="nombre" placeholder="Nombre">
+        <input name="descripcion" class="form-control mt-2" formControlName="descripcion"  placeholder="Descripción">
+        <input name="duracion" class="form-control mt-2" formControlName="duracion"  placeholder="Duración">
+        <input name="costo" class="form-control mt-2" formControlName="costo"  placeholder="Costo">
+        <button class="btn btn-secondary mt-2" (click)="ingresarCurso()">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>
